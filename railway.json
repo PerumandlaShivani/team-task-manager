@@ -3,7 +3,7 @@
     "builder": "NIXPACKS"
   },
   "deploy": {
-    "startCommand": "gunicorn app:app",
-    "healthcheckPath": "/"
+    "startCommand": "gunicorn app:app --bind 0.0.0.0:$PORT",
+    "healthcheckPath": "/health"
   }
 }

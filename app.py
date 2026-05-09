@@ -447,6 +447,21 @@ def add_project_member(project_id):
         'joined_at': member.joined_at.isoformat()
     }), 201
 
+@app.route('/')
+def index():
+    return jsonify({
+        'message': 'Team Task Manager API is running',
+        'version': '1.0.0',
+        'status': 'healthy'
+    })
+
+@app.route('/health')
+def health_check():
+    return jsonify({
+        'status': 'healthy',
+        'database': 'connected'
+    })
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
